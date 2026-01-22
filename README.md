@@ -1,5 +1,4 @@
 # Oilfield API Go
-[![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/rashidiic/oilfield-api-go)
 
 This repository contains a RESTful API built with Go, providing mock CRUD (Create, Read, Update, Delete) functionality for "items". It utilizes the Gin web framework for routing, GORM for database interaction with a SQLite backend, and Swagger for API documentation.
 
