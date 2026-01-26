@@ -14,22 +14,26 @@ import (
 	"example.com/oilfield-api-go-two/internal/mock"
 )
 
-// @title           Oilfield API (Week 1 Mock CRUD)
+// @title           Oilfield API
 // @version         1.0
-// @description     Week 1: Gin + GORM + SQLite + Swagger + Mock CRUD
+// @description     Week 1: Mock CRUD | Week 2: Oilfield schema + seed
 // @BasePath        /
 func main() {
+	// --- Init DB ---
 	database, err := db.InitDB("data/app.db")
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	// --- AutoMigrate (Week 1 + Week 2) ---
 	if err := db.AutoMigrate(database); err != nil {
 		log.Fatal(err)
 	}
 
+	// --- Gin ---
 	r := gin.Default()
 
+	// --- API group ---
 	api := r.Group("/api")
 	{
 		api.GET("/health", func(c *gin.Context) {
@@ -37,9 +41,14 @@ func main() {
 		})
 	}
 
+	// --- Mock CRUD (Week 1) ---
 	mock.RegisterRoutes(api, database)
 
+	// --- Swagger ---
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	r.Run(":8080")
+	// --- Run server ---
+	if err := r.Run(":8080"); err != nil {
+		log.Fatal(err)
+	}
 }

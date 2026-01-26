@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 
 	"example.com/oilfield-api-go-two/internal/mock"
+	"example.com/oilfield-api-go-two/internal/models"
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
@@ -25,5 +26,11 @@ func InitDB(sqlitePath string) (*gorm.DB, error) {
 }
 
 func AutoMigrate(db *gorm.DB) error {
-	return db.AutoMigrate(&mock.MockItem{})
+	return db.AutoMigrate(
+		&mock.MockItem{},   // Week 1
+		&models.OilField{}, // Week 2
+		&models.Well{},
+		&models.Sensor{},
+		&models.ProductionReading{},
+	)
 }
