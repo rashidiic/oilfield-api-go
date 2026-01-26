@@ -71,7 +71,6 @@ A Go backend project built to learn and implement a clean API flow using **Gin**
 │
 ├── go.mod            # Go module dependencies
 └── go.sum            # Dependency checksums
-<<<<<<< HEAD
 
 ```
 
