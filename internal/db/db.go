@@ -27,8 +27,8 @@ func InitDB(sqlitePath string) (*gorm.DB, error) {
 
 func AutoMigrate(db *gorm.DB) error {
 	return db.AutoMigrate(
-		&mock.MockItem{},   // Week 1
-		&models.OilField{}, // Week 2
+		&mock.MockItem{},
+		&models.OilField{},
 		&models.Well{},
 		&models.Sensor{},
 		&models.ProductionReading{},

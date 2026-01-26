@@ -37,7 +37,6 @@ func main() {
 }
 
 func Seed(db *gorm.DB) error {
-	// чистим в правильном порядке
 	db.Exec("DELETE FROM production_readings")
 	db.Exec("DELETE FROM sensors")
 	db.Exec("DELETE FROM wells")
